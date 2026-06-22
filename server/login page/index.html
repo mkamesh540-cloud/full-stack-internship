@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>LOGIN PAGE</title>
+    </head>
+    <body style="background-color: lightgray;">
+
+        <div class="css-form">
+        <h1 class="css-wel">Welcome</h1>
+        <input type="email" placeholder="enter your email" class="css-email">
+        <input type="password" placeholder="enter your password" class="css-pass">
+        <button class="css-sign" onclick="login();">sign in</button>
+        </div>
+
+        <style>
+                body{
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    margin-top: 200px;
+                    height: 50px;
+                }
+                .css-form{
+                    background-color: white;
+                    padding: 60px;
+                    text-align: center;
+                    display: grid;
+                    row-gap: 20px;
+                    border-radius: 20px;
+                    box-shadow: 0 4px 10px lightsalmon;
+                
+                }
+
+                .css-email,.css-pass{
+                    padding: 5px;
+                }
+
+                .css-wel{
+                    margin-top: 0;
+                    font-weight: bold;
+                    font-size: 40px;
+                }
+
+                .css-sign{
+                    cursor: pointer;
+                    padding: 5px;
+                    background-color: darkblue;
+                    border-radius: 20px;
+                    border : none;
+                    color: white;
+                }
+                
+        </style>
+
+        <script>
+            function login() {
+                alert('sign in successfull');
+                window.location.href = 'home.html';
+            }
+        </script>
+       
+    </body>
+</html>
