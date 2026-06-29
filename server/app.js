@@ -1,9 +1,25 @@
-const http = require("http");
+const express = require("express");
+const cors = require("cors");
 
-const server = http.createServer((req, res) => {
-  res.end("Hello world!");
+const app = express();
+
+app.use(cors());
+app.use(express.json());
+
+app.get("/", (req, res) => {
+    res.send("Hello Kamesh");
 });
 
-server.listen(3000, () => {
-  console.log("Server running on port 3000");
+app.post("/signin", (req, res) => {
+
+    console.log(req.body);
+
+    res.json({
+        success: true,
+        message: "Sign In Successful"
+    });
+});
+
+app.listen(3000, () => {
+    console.log("Server running on port 3000");
 });

@@ -7,8 +7,12 @@
 
         <div class="css-form">
         <h1 class="css-wel">Welcome</h1>
-        <input type="email" placeholder="enter your email" class="css-email">
-        <input type="password" placeholder="enter your password" class="css-pass">
+        <p class="css-user">Username :</p>
+        <input type="text" placeholder="enter username" class="css-name">
+        <p class="css-email-type">Email :</p>
+        <input type="email" placeholder="enter your email" class="css-email" id="email">
+        <P class="css-pass-type">Password :</P>
+        <input type="password" placeholder="enter your password" class="css-pass" id="password">
         <button class="css-sign" onclick="login();">sign in</button>
         </div>
 
@@ -20,25 +24,29 @@
                     margin-top: 200px;
                     height: 50px;
                 }
+
+                 .css-wel{
+                    margin-top: 0;
+                    font-weight: bold;
+                    font-size: 40px;
+                    text-align: center;
+                }
+
+
                 .css-form{
                     background-color: white;
-                    padding: 60px;
-                    text-align: center;
+                    padding: 40px 90px;
                     display: grid;
-                    row-gap: 20px;
+                    margin-top: 100px;
                     border-radius: 20px;
                     box-shadow: 0 4px 10px lightsalmon;
                 
                 }
 
-                .css-email,.css-pass{
+                .css-email,.css-pass, .css-name{
                     padding: 5px;
-                }
-
-                .css-wel{
-                    margin-top: 0;
-                    font-weight: bold;
-                    font-size: 40px;
+                    margin-bottom: 20px;
+                
                 }
 
                 .css-sign{
@@ -48,15 +56,52 @@
                     border-radius: 20px;
                     border : none;
                     color: white;
+                    margin-top: 20px;
                 }
+
+
+                .css-user, .css-email-type, .css-pass-type {
+                    margin: 1px;
+                }
+
                 
         </style>
 
         <script>
-            function login() {
-                alert('sign in successfull');
-                window.location.href = 'home.html';
-            }
+           async function login() {
+
+    const email =
+    document.getElementById("email").value;
+
+    const password =
+    document.getElementById("password").value;
+
+    const response = await fetch(
+        "http://localhost:3000/signin",
+        {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({
+                email,
+                password
+            })
+        }
+    );
+
+    const data = await response.json();
+
+    alert('sign in succesfull');
+
+    if(data.success){
+       window.location.href = "home.html";
+    }else{
+        alert(data.message);
+    }
+
+    
+}
         </script>
        
     </body>
